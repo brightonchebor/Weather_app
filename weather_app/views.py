@@ -28,6 +28,8 @@ def index(request):
             'daily_forecast2' : daily_forecast2,
         }
 
+        return render(request, 'index.html', context)
+
 
     else:
         return render(request, 'index.html')
@@ -48,10 +50,10 @@ def fetch_weather_and_forecast(city, api_key, current_weather_url, forecast_url)
     for daily_data in forecast_response['daily'][:5]:
         daily_forecasts.append({
             'day': datetime.datetime.fronttimestamp(daily_data['dt']).strftime("%A"),
-            'min_temp' : round(daily_data['temp']['min'] - 273.15, 2)
-            'max_temp' : round(daily_data['temp']['max'] - 273.15, 2)
-            'description' : daily_data['weather'][0]['description']
-            'icon' : daily_data['weather'][0]['icon']
+            'min_temp' : round(daily_data['temp']['min'] - 273.15, 2),
+            'max_temp' : round(daily_data['temp']['max'] - 273.15, 2),
+            'description' : daily_data['weather'][0]['description'],
+            'icon' : daily_data['weather'][0]['icon'],
         })
     
     return weather_data, daily_forecasts
