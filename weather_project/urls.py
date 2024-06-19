@@ -22,7 +22,7 @@ from base import views as app_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('weather_app.urls')),
+    #path('', include('weather_app.urls')),
     #path('', include('base.urls'), name='app-index'),
     path('', app_views.index, name='app_index'),
 ]
